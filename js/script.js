@@ -38,18 +38,20 @@ function getRandomQuote(){
 ***/
 function printQuote(getRandomQuote) {
   let x = getRandomQuote();
-    if(x == ){
+    if(x.year){
+      console.log(x.year);
+    }else {
 
-
+      console.log("There are no year in this citation.");          
     }
   //let finalQuote = <p class="quote"> A random quote </p>;
   //let finalSource = <p class="source"> quote source </p>;
-
-  return document.getElementById('quote-box').innerHTML =`The quote is :${x.theQuotes}
-  the source is : ${x.source}`;
+  return x.theQuotes + x.source +x.year;
+  //return document.getElementById('quote-box').innerHTML =`The quote is :${x.theQuotes}
+  //the source is : ${x.source}`;
 }
 
-
+console.log(printQuote(getRandomQuote));
 
 
 /***
