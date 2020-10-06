@@ -43,7 +43,7 @@ function getRandomQuote(){
 function printQuote() {
   //this function will seperate the different property of my object,connect it to the index file and to place them in the correct order on the website.
   let x = getRandomQuote();
-  let finalQuote = `<p class=class="quote"> ${x.theQuote} </p><p class="source"> ${x.source}`;
+  let finalQuote = `<p class="quote"> ${x.theQuote} </p><p class="source"> ${x.source}`;
   
    //This if statement check either the obj randomQuote has a property citation with a boolean. If true the code enter the if block if false it doesnt enter the if block
 
