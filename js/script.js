@@ -36,23 +36,23 @@ function getRandomQuote(){
 /***
  * `printQuote` function
 ***/
-function printQuote(getRandomQuote) {
+function printQuote() {
   let x = getRandomQuote();
-    if(x.year){
-      console.log(x.year);
-    }else {
-
-      console.log("There are no year in this citation.");          
-    }
-  //let finalQuote = <p class="quote"> A random quote </p>;
+       
+    
+  let finalQuote = ' class="quote">' + x.theQuotes + `hello`;
+  
+  
   //let finalSource = <p class="source"> quote source </p>;
-  return x.theQuotes + x.source +x.year;
-  //return document.getElementById('quote-box').innerHTML =`The quote is :${x.theQuotes}
+  //return x.theQuotes + x.source +x.year;
+  document.getElementById('quote-box').innerHTML = finalQuote;
   //the source is : ${x.source}`;
+  //document.getElementById('load-quote').addEventListener("click", printQuote, false);
+console.log(finalQuote);
+
 }
 
-console.log(printQuote(getRandomQuote));
-
+printQuote();
 
 /***
  * click event listener for the print quote button
