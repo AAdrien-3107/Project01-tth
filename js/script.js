@@ -27,13 +27,13 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 function getRandomQuote(){
-  //this function generate a random number between 0 and the amount of object my array containes. Using the ".length" methode/function.
-  let randomPicker;
-  for(let i = 0;i < quotes.length;i++){
-    randomPicker = Math.floor(Math.random()* quotes.length);
-  }  
-  //The random number is associated to a index of the array and return the entire object including all the property that it containe.
-  return quotes[randomPicker];
+    //this function generate a random number between 0 and the amount of object my array containes. Using the ".length" methode/function.
+    let randomPicker;
+    for(let i = 0;i < quotes.length;i++){
+      randomPicker = Math.floor(Math.random()* quotes.length);
+    }  
+    //The random number is associated to a index of the array and return the entire object including all the property that it containe.
+    return quotes[randomPicker];
 }
 
 
@@ -41,44 +41,59 @@ function getRandomQuote(){
  * `printQuote` function
 ***/
 function printQuote() {
-  //this function will seperate the different property of my object,connect it to the index file and to place them in the correct order on the website.
-  let x = getRandomQuote();
-  let finalQuote = `<p class="quote"> ${x.theQuote} </p><p class="source"> ${x.source}`;
+    //this function will seperate the different property of my object,connect it to the index file and to place them in the correct order on the website.
+    let x = getRandomQuote();
+    let finalQuote = `<p class="quote"> ${x.theQuote} </p><p class="source"> ${x.source}`;
+    
+    //This if statement check either the obj randomQuote has a property citation with a boolean. If true the code enter the if block if false it doesnt enter the if block
+
+    if(x.citation){   
+        //if true the value will be add to my finalSource variable.
+        finalQuote += `<span class="citation"> ${x.citation} </span>`;
+    }
+    if(x.year){
+        finalQuote += `<span class="year"> ${x.year} </span>`;
+    }
+    if(x.tags){
+        finalQuote += `
+        <span class="citation"> ${x.tags} </span>`;
+    }
   
-   //This if statement check either the obj randomQuote has a property citation with a boolean. If true the code enter the if block if false it doesnt enter the if block
+    finalQuote += `</p>`;
 
-  if(x.citation){   
-    console.log(x.citation);
-    //if true the value will be add to my finalSource variable.
-    finalQuote += `<span class="citation"> ${x.citation} </span>`;
-  }
-  if(x.year){
-    console.log(x.year);
-    finalQuote += `<span class="year"> ${x.year} </span>`;
-  }
-  if(x.tags){
-    console.log(x.tags);
-    finalQuote += `
-    <span class="citation"> ${x.tags} </span>`;
-  }
- 
-  finalQuote += `</p>`;
-
-  document.getElementById('quote-box').innerHTML = finalQuote;
-
-
+    document.getElementById('quote-box').innerHTML = finalQuote;
 }
+/* 
+  //I attempt to go for the exceed expectation grade but too much unknow information so i wasnt able to finish each step.
+  
+  //This set the interval of when the page will generate a new quote. which works but only 1 time use then i couldnt figure out how to make it work multiple time.
+  //let myIntervalGenerator = setInterval(printQuote,2000);
 
-let myIntervalGenerator = setInterval(printQuote,2000);
+  function stopMyInterval(){
+    clearInterval(myIntervalGenerator);
+  }
 
-function stopMyInterval(){
-  clearInterval(myIntervalGenerator);
+  let rgbGenerator = [];
+  //This generateRandomColor generate 3 integer and put it in a array to define the rgb color of the background.
+  //The function works and return me 3 int but cant make the connection properly with .body so it doesnt take effect on the website.
+
+  function generateRandomColor(){
+      let maxRange = 255;
+      
+      //loop 3 time and put it in a array.
+      for(let i = 0;i < 3;i++){
+        let r = Math.floor(Math.random()* maxRange)+1;
+        rgbGenerator.push(r);
+        }
+        var a = rgbGenerator[0];
+        var b = rgbGenerator[1];
+        var c = rgbGenerator[2];
+        
+        let randomRGB = "'rgb(" + a + "," + b + "," + c + ")'";
+
+        return document.body.style.backgroundColor = randomRGB;
 }
-
-
-
-
-//printQuote();
+ */
 
 /***
  * click event listener for the print quote button
@@ -86,3 +101,4 @@ function stopMyInterval(){
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
